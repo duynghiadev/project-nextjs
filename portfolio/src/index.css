@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "IBM Plex Sans Arabic", sans-serif;
+    scroll-behavior: smooth;
+  }
+  body {
+    max-width: 100vw;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+}
+@layer components {
+  .nav-link {
+    @apply inline-block py-2 before:content-[""] before:absolute before:bottom-0 before:left-[50%] before:w-0 before:h-[3px] before:rounded-sm before:bg-red-300 hover:before:w-full before:transition-all before:duration-300 before:ease-in-out hover:before:left-0 hover:text-red-300;
+  }
+  .static-txt {
+    @apply text-white;
+  }
+  .dynamic-txt {
+    @apply text-red-400 h-[90px] leading-[90px] overflow-hidden;
+  }
+  .dynamic-txt-span {
+    @apply inline-block text-transparent bg-clip-text bg-gradient-to-br from-red-200 to-red-600 relative leading-[90px] after:content-[""] after:absolute after:left-0 after:h-[100%] after:w-[100%]  after:border-r-4 after:border-red-400 animate-typing;
+  }
+  .icon-link {
+    @apply relative cursor-pointer p-2 before:content-[""] before:w-0 before:h-[3px] before:bg-red-400 before:absolute before:bottom-0 before:left-0 hover:before:w-full;
+  }
+}

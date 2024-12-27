@@ -1,0 +1,40 @@
+
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_HUB_USERNAME = credentials('DOCKER_HUB_USERNAME')
+        DOCKER_HUB_PASSWORD = credentials('DOCKER_HUB_PASSWORD')
+        SERVER_USER = credentials('SERVER_USER')
+        SERVER_URL = credentials('SERVER_URL')
+        SERVER_SSH_KEY_FILE = credentials('SERVER_SSH_KEY_FILE')
+    }
+
+    stages {
+        // Build
+        stage('Build') {
+          when {
+                anyOf {
+                    branch 'master'
+                }
+            }
+
+          steps {
+              sh 'chmod +x ./jenkins/scripts/build.sh && ./jenkins/scripts/build.sh'
+            }
+        }
+
+        // Deploy
+        stage('Deploy') {
+            when {
+                anyOf {
+                    branch 'master'
+                }
+            }
+
+            steps {
+                sh 'chmod +x ./jenkins/scripts/deploy.sh && ./jenkins/scripts/deploy.sh'
+            }
+        }
+    }
+}
