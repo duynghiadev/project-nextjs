@@ -11,4 +11,4 @@ docker tag portfolio:latest hoafngxown/portfolio:latest
 
 docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
 
-docker push hoafngxown/portfolio:latest 
+docker push hoafngxown/portfolio:latest
